@@ -234,3 +234,14 @@ body,p,li,td,th,dd,dt,h1,h2,h3,a,span{word-break:keep-all;overflow-wrap:anywhere
   .tw:not(#tbl) tr>td:first-child[data-label]{padding-left:0}
   .tw:not(#tbl) tr>td:first-child[data-label]::before{display:none}
 }
+
+/* 해외 요금(국가별) 표 */
+.tw-intl td{vertical-align:top}
+@media(min-width:640px){.tw-intl th,.tw-intl td{padding-left:8px;padding-right:8px}.tw-intl th:first-child,.tw-intl td:first-child{padding-left:14px}.tw-intl table{min-width:0}}
+.tw-intl td .p{font-weight:700}
+.intl-notes{margin:8px 0 12px;font-size:var(--fs-s)}
+.intl-notes summary{cursor:pointer;font-weight:500;color:#374151}
+.intl-notes ul{margin:6px 0 0}
+.tw-intl th[scope=row]{min-width:96px;overflow-wrap:normal;word-break:keep-all}
+.tw-intl .diff.up{color:#9a3412}.tw-intl .diff.down{color:#166534}
+@media(max-width:639.98px){.tw-intl td.empty{display:none!important}}
