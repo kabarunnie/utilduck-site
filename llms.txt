@@ -33,3 +33,4 @@
 ## 데이터
 - RSS: https://utilduck.com/feed.xml
 - Sitemap: https://utilduck.com/sitemap.xml
+- 글 전문 RSS: https://utilduck.com/feed-articles.xml
