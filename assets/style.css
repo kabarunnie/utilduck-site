@@ -1,15 +1,15 @@
 /* 유틸덕 디자인 토큰 v2 — 화이트·쿨그레이 + 딥 블루 단일 강조, "1/N 정산표" 컨셉. 직접 작성(외부 CSS 복사 없음). */
 :root{
   --bg:#f7f8fa;--surface:#fff;--surface-2:#f9fafb;--line:#e5e7eb;--line-2:#eef0f3;
-  --fg:#111827;--mut:#6b7280;--acc:#1d4ed8;--acc-hover:#1e40af;--acc-soft:#eff4ff;
+  --fg:#111827;--mut:#374151;--acc:#1d4ed8;--acc-hover:#1e40af;--acc-soft:#eff4ff;
   --navy:#0f2a5c;--warn:#92400e;--warn-soft:#fffbeb;--warn-line:#fcd9a6;
   --r-s:4px;--r-m:6px;--r-l:8px;--r-pill:6px;
   --sh-pop:0 1px 3px rgba(17,24,39,.06),0 1px 2px rgba(17,24,39,.04);
-  --fs-xs:.75rem;--fs-s:.8125rem;--fs-m:.9375rem;--fs-b:1rem;--fs-lead:1.0625rem;--fs-h3:1.0625rem;--fs-h2:1.3125rem;--fs-h1:1.75rem;--fs-num:2.5rem;
+  --fs-xs:.8125rem;--fs-s:.875rem;--fs-m:.9375rem;--fs-b:1rem;--fs-lead:1.0625rem;--fs-h3:1.0625rem;--fs-h2:1.3125rem;--fs-h1:1.75rem;--fs-num:2.5rem;
   --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
 }
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;font:400 var(--fs-b)/1.7 var(--font);background:var(--bg);color:var(--fg);letter-spacing:-.005em;font-variant-numeric:tabular-nums;word-break:keep-all;overflow-wrap:anywhere}
+body{margin:0;font:400 var(--fs-b)/1.6 var(--font);background:var(--bg);color:var(--fg);letter-spacing:-.005em;font-variant-numeric:tabular-nums;word-break:keep-all;overflow-wrap:anywhere}
 a{color:var(--acc);text-underline-offset:3px;text-decoration-thickness:1px}a:hover{color:var(--acc-hover)}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
@@ -100,7 +100,7 @@ span.src{text-decoration:none}
 table{border-collapse:collapse;width:100%;font-size:var(--fs-m);font-variant-numeric:tabular-nums}
 th,td{padding:12px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line-2)}
 tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
-thead th{background:#f3f4f6;color:#4b5563;font-size:var(--fs-xs);font-weight:600;white-space:nowrap;border-bottom:1px solid var(--line)}
+thead th{background:#f3f4f6;color:#374151;font-size:var(--fs-xs);font-weight:600;white-space:nowrap;border-bottom:1px solid var(--line)}
 tbody th{font-weight:700}
 td.num{white-space:nowrap;font-weight:700}
 td.num .src,td.num .small{font-weight:400}
@@ -164,7 +164,7 @@ li{margin:.25em 0}
 .kpi-main{display:flex;flex-direction:column;justify-content:center}
 .svc-cards{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
 @media(max-width:560px){.svc{padding:14px}.svc .big{font-size:1.1875rem}}
-.result .small,.result .src,.result .kpi-label{color:#4b5563}
+.result .small,.result .src,.result .kpi-label{color:#374151}
 
 /* v3: 날짜는 항상 아래 줄, 날짜 안에서 줄바꿈 금지 */
 time{white-space:nowrap}
@@ -211,3 +211,26 @@ time{white-space:nowrap}
   .tw:not(#tbl) td[data-label="가격"]::before,.tw:not(#tbl) td[data-label="가장 싼 유료 요금"]::before{top:14px}
 }
 @media(max-width:639.98px){.tw:not(#tbl) tr>td:first-child[data-label]{padding-left:0;display:block}.tw:not(#tbl) tr>td:first-child[data-label]::before{display:none}}
+
+/* v4: 글자 진하게·줄바꿈 정리 */
+body,p,li,td,th,dd,dt,h1,h2,h3,a,span{word-break:keep-all;overflow-wrap:anywhere}
+.nw,.p,.big,.kpi-num,.kpi-s .v,.result strong,time,.dt{white-space:nowrap}
+.kpi-label,.sc-row dt,.svc .cat,.spec th[scope=row],.side-h,.row label{font-weight:500}
+.kpi-label,.svc .cat{color:#374151}
+.byline-list{list-style:none;padding:0!important;margin:8px 0 16px;font-size:var(--fs-s);color:var(--mut);line-height:1.6}
+.byline-list li{margin:2px 0}
+.byline-list.byline{padding-bottom:16px!important;border-bottom:1px solid var(--line)}
+.prose p,.prose li{line-height:1.75}
+.lead{line-height:1.65}
+@media(max-width:639.98px){
+  body{font-size:.9375rem}
+  .lead,.prose p,.prose li{font-size:.9375rem}
+  .sc-row{grid-template-columns:42% minmax(0,1fr);font-size:.9375rem}
+  .sc-row.sc-long{grid-template-columns:1fr;gap:2px}
+  .tw:not(#tbl) td[data-label]{padding-left:calc(42% + 12px);font-size:.9375rem}
+  .tw:not(#tbl) td[data-label]::before{width:42%;font-weight:500;color:#374151}
+  .tw:not(#tbl) td[data-long]{padding-left:0}
+  .tw:not(#tbl) td[data-long]::before{position:static;display:block;width:auto;margin-bottom:2px}
+  .tw:not(#tbl) tr>td:first-child[data-label]{padding-left:0}
+  .tw:not(#tbl) tr>td:first-child[data-label]::before{display:none}
+}
