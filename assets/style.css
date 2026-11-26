@@ -165,3 +165,49 @@ li{margin:.25em 0}
 .svc-cards{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
 @media(max-width:560px){.svc{padding:14px}.svc .big{font-size:1.1875rem}}
 .result .small,.result .src,.result .kpi-label{color:#4b5563}
+
+/* v3: 날짜는 항상 아래 줄, 날짜 안에서 줄바꿈 금지 */
+time{white-space:nowrap}
+.dt{display:block;white-space:nowrap;font-size:var(--fs-s);color:var(--mut);font-weight:400}
+.src{display:block;width:max-content;max-width:100%;margin-top:2px}
+.src .dt{text-decoration:underline;text-underline-offset:2px}
+.kpi-sub .more{display:inline-block;margin-top:6px;font-size:var(--fs-s)}
+.log li time.dt{margin:2px 0 0}
+.svc .sub .dt{font-size:var(--fs-xs)}
+
+/* v3: 요금제별 카드(640px 미만에서만 보임) */
+.spec-cards{display:none}
+.sc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:16px;margin:0 0 12px}
+.sc-t{margin:0 0 4px;font-size:1.0625rem;line-height:1.4}
+.sc-p{margin:0 0 8px}.sc-p .p{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+.sc dl{margin:0}
+.sc-row{display:grid;grid-template-columns:38% minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line-2);font-size:.9375rem;line-height:1.6}
+.sc-row dt{color:var(--mut)}.sc-row dd{margin:0}
+.sc-src{margin:8px 0 0;padding-top:10px;border-top:1px solid var(--line-2)}
+
+@media(max-width:639.98px){
+  .tw-spec{display:none}
+  .spec-cards{display:block}
+  /* 여러 열 표 → 행마다 카드. 계산기 인원 표(#tbl)는 3열이라 표 그대로 */
+  .tw:not(#tbl){overflow:visible;background:none;border:0;border-radius:0}
+  .tw:not(#tbl) table,.tw:not(#tbl) tbody,.tw:not(#tbl) tr,.tw:not(#tbl) th,.tw:not(#tbl) td{display:block;width:100%}
+  .tw:not(#tbl) thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .tw:not(#tbl) tr{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:6px 16px;margin:0 0 12px}
+  .tw:not(#tbl) th,.tw:not(#tbl) td{padding:10px 0;border-bottom:1px solid var(--line-2);font-size:.9375rem;line-height:1.6;white-space:normal;min-width:0;max-width:none;position:static;box-shadow:none;background:none}
+  .tw:not(#tbl) tr>:last-child{border-bottom:0}
+  .tw:not(#tbl) tr>:first-child{font-size:1.0625rem;font-weight:700;color:var(--fg);padding-top:12px}
+  .tw:not(#tbl) tr>:first-child::before{display:none}
+  .tw:not(#tbl) td[data-label]{display:grid;grid-template-columns:38% minmax(0,1fr);gap:12px}
+  .tw:not(#tbl) td[data-label]::before{content:attr(data-label);color:var(--mut);font-weight:400;font-size:.875rem}
+  .tw:not(#tbl) td[data-label="가격"],.tw:not(#tbl) td[data-label="가장 싼 유료 요금"]{font-size:1.25rem;font-weight:800}
+  .tw:not(#tbl) td[data-label="가격"] .badge,.tw:not(#tbl) td[data-label="가장 싼 유료 요금"] .small,.tw:not(#tbl) td[data-label="가장 싼 유료 요금"] .src{font-weight:400}
+  .tw:not(#tbl) .small,.tw:not(#tbl) .src,.tw:not(#tbl) .dt,.sc .small,.sc .src,.sc .dt,.sc .badge,.tw:not(#tbl) .badge{font-size:.875rem}
+  .svc .sub,.svc .sub .dt,.svc .cat,.kpi-label,.kpi-sub,.small,.crumbs,.src,.dt{font-size:.875rem}
+  #tbl table{font-size:.9375rem}#tbl thead th{font-size:.875rem}
+}
+@media(max-width:639.98px){
+  .tw:not(#tbl) td[data-label]{display:block;position:relative;padding-left:calc(38% + 12px)}
+  .tw:not(#tbl) td[data-label]::before{position:absolute;left:0;top:10px;width:38%;line-height:1.5}
+  .tw:not(#tbl) td[data-label="가격"]::before,.tw:not(#tbl) td[data-label="가장 싼 유료 요금"]::before{top:14px}
+}
+@media(max-width:639.98px){.tw:not(#tbl) tr>td:first-child[data-label]{padding-left:0;display:block}.tw:not(#tbl) tr>td:first-child[data-label]::before{display:none}}
